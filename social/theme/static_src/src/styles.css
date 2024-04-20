@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.jersey {
+  font-family: "Jersey 25", sans-serif;
+}
