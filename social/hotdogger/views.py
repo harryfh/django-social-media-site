@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Profile
+from .models import Profile, BlogPost
 
 def dashboard(request):
     return render(request, "base.html")
@@ -11,8 +11,7 @@ def profile_list(request):
     else:
           profiles = Profile.objects.exclude(user=request.user)
  
-        
-
+    
     return render(request, "hotdogger/profile_list.html", {"profiles": profiles})
 
 def profile(request, pk):

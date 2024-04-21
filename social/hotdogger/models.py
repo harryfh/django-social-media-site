@@ -22,5 +22,18 @@ def create_profile(sender, instance, created, **kwargs):
         user_profile.follows.add(instance.profile) # Foloow yourself
         user_profile.save()
 
+class BlogPost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="blogs")
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    @property
+    def description(self):
+        return self.content[:100]
 
 
+    def __str__(self):
+        return self.title
+    
