@@ -12,13 +12,28 @@
       href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+15display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+20+Charted&display=swap"
+      rel="stylesheet"
+    />
+
     {% tailwind_css %}
     <title>{{ title }}</title>
   </head>
-  <body class="h-screen min-h-screen">
+  <body class="min-h-screen">
     <!-- <div class="flex flex-col justify-center py-px-16 h-full bg-brown-1"> -->
     {% include "components/navigation.html" %}
-    <div class="flex flex-col items-center py-16 h-full w-full bg-brown-2">
+    <div
+      class="flex flex-col items-center py-16 h-full min-h-screen w-full bg-brown-2"
+    >
       <img
         class="w-32"
         src="https://media.tenor.com/tbLD5H8CIO8AAAAi/hot-dog-hot-dogs.gif"
@@ -31,7 +46,7 @@
         </h1>
       </header>
 
-      <main class="container grid-cols-3 grid">
+      <main class="container h-full">
         {% block content %} {% endblock content %}
       </main>
     </div>

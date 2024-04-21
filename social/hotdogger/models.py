@@ -35,5 +35,5 @@ class BlogPost(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else self.content[:30]
     

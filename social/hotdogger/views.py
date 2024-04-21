@@ -1,8 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Profile, BlogPost
+from .forms import BlogForm
 
 def dashboard(request):
-    return render(request, "base.html")
+    if request.method == "POST":
+        form = BlogForm(request.POST or None) 
+        if form.is_valid() :
+            blog = form.save(commit=False)
+            blog.user = request.user
+            blog.save()
+            return redirect("hotdogger:dashboard")
+    form = BlogForm()
+    return render(request, "hotdogger/dashboard.html", {"form": form})
+
+
 
 def profile_list(request):
 
