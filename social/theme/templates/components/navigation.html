@@ -13,6 +13,13 @@
       >
         Profile List
       </a>
+
+      <a
+        href="{% url 'hotdogger:profile' request.user.profile.id%}"
+        class="uppercase text-2xl py-1 px-2 rounded inline-block bg-black text-white text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700"
+      >
+        My Profile
+      </a>
       <a
         href="/admin"
         class="uppercase text-2xl py-1 px-2 rounded inline-block bg-black text-white text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-700"

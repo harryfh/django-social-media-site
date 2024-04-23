@@ -1,17 +1,19 @@
 {% extends "base.html" %} {% block content %}
 
 <div
-  class="flex flex-col text-lg rounded h-fit jersey-25 bg-yellow p-10 my-10 mx-16"
+  class="flex flex-col text-xl rounded h-fit jersey-25 text-red jersey bg-yellow p-10 my-10 mx-16"
 >
   <div class="goback mb-4 hover: cursor-pointer hover:text-red">
     <a href="/">&larr; Go back</a>
   </div>
 
   <header class="mb-7 flex flex-col">
-    <h1 class="text-3xl font-bold mr-10">{{ blog.titlte }}</h1>
+    <h1 class="text-3xl font-bold mr-10">
+      {% if blog.title %} {{ blog.title }} {% else %} Untitled {% endif %}
+    </h1>
     <p>
-      by {{author}} on
-      <time datetime=""></time>
+      by {{blog.user}} at
+      <time datetime="">{{ blog.created_at }} </time>
     </p>
   </header>
 
