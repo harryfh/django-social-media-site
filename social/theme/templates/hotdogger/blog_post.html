@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  class="flex flex-col text-lg rounded h-fit jersey-25 bg-yellow p-10 my-10 mx-16"
+>
+  <div class="goback mb-4 hover: cursor-pointer hover:text-red">
+    <a href="/">&larr; Go back</a>
+  </div>
+
+  <header class="mb-7 flex flex-col">
+    <h1 class="text-3xl font-bold mr-10">{{ blog.titlte }}</h1>
+    <p>
+      by {{author}} on
+      <time datetime=""></time>
+    </p>
+  </header>
+
+  <main class="flex flex-col h-full gap-6">
+    <p>{{ blog.content }}</p>
+  </main>
+</div>
+
+{% endblock %}

@@ -40,4 +40,9 @@ def profile(request, pk):
         elif action == "unfollow":
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
+        
     return render(request, "hotdogger/profile.html", {"profile": profile})
+
+def blog_post(request,pk):
+    blog = BlogPost.objects.get(pk=pk)
+    return render(request, "hotdogger/blog_post.html", {"blog": blog})

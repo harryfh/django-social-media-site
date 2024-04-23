@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block content %}
+<div class="flex flex-col items-center w-full">
+  <div class="flex place-items-center justify-center gap-5 col-span-3 mb-5">
+    <h1 class="text-3xl p-3 jersey">
+      {{profile.user.username|upper}}'s Hotdog Blogs
+    </h1>
+
+    <form method="post">
+      {% csrf_token %}
+      <div>
+        {% if profile in user.profile.follows.all %}
+        <button class="btn-2 jersey p-1" name="follow" value="unfollow">
+          Unfollow
+        </button>
+
+        {% else %}
+        <button class="btn-2 jersey p-1" name="follow" value="follow">
+          Follow
+        </button>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</div>
+<div class="grid grid-cols-3 justify-items-center">
+  <div class="mt-2 jersey w-full col-start-1">
+    <div class="mx-16 jersey">
+      <h3 class="text-2xl jersey text-center text-yellow">Following</h3>
+      {% for profile in profile.follows.all %}
+      <article
+        class="my-8 flex flex-col stroke-black rounded p-5 bg-yellow hover:shadow-[0px_0px_0px_5px_rgba(0,0,0,1)] shadow-[0px_0px_0px_3px_rgba(0,0,0,1)] text-red"
+      >
+        <div class="flex flex-col items-center text-center">
+          <p class="text-lg">{{ profile.user.username }}</p>
+          <p class="text-md mb-3">@{{ profile.user.username|lower }}</p>
+          <p class="text-center bg-brown-1 rounded">
+            <a
+              href="{% url 'hotdogger:profile' profile.id %}"
+              class="text-brown-2 font-bold w-full py-1 px-2 text-lg hover:text-black cursor-pointer"
+            >
+              Follow
+            </a>
+          </p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="mt-2 jersey w-full col-start-2">
+    <h3 class="text-2xl mx-16 jersey text-center text-yellow">Blog Posts</h3>
+    {% include 'components/blog_list.html' with profile=profile %}
+  </div>
+  <div class="mt-2 jersey w-full col-start-3">
+    <h3 class="text-2xl mx-16 jersey text-center text-yellow">Followers</h3>
+    {% for profile in profile.followed_by.all %}
+
+    <article
+      class="my-8 mx-16 flex items-center content-center flex-col stroke-black rounded p-6 bg-yellow hover:shadow-[0px_0px_0px_5px_rgba(0,0,0,1)] shadow-[0px_0px_0px_3px_rgba(0,0,0,1)] text-red"
+    >
+      <div class="flex flex-col items-center text-center">
+        <p class="text-lg">{{ profile.user.username }}</p>
+        <p class="text-md mb-3">@{{ profile.user.username|lower }}</p>
+        <p class="text-center bg-brown-1 rounded">
+          <a
+            href="{% url 'hotdogger:profile' profile.id %}"
+            class="text-brown-2 w-full py-1 px-2 font-bold text-lg hover:text-black cursor-pointer"
+          >
+            Follow
+          </a>
+        </p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% endblock %}
+</div>

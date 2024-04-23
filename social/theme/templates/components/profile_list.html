@@ -1,0 +1,22 @@
+<div class="w-1/2 mt-2 jersey col-start-2">
+  {% for profile in profiles %}
+  <div class="mt-2 jersey w-full">
+    <article
+      class="my-8 flex flex-col stroke-black rounded p-6 bg-yellow hover:shadow-[0px_0px_0px_5px_rgba(0,0,0,1)] shadow-[0px_0px_0px_3px_rgba(0,0,0,1)] text-red"
+    >
+      <div class="flex flex-col items-center text-center">
+        <p class="text-lg">{{ profile.user.username }}</p>
+        <p class="text-md mb-3">@{{ profile.user.username|lower }}</p>
+        <p class="text-center w-1/2 bg-brown-1 rounded">
+          <a
+            href="{% url 'hotdogger:profile' profile.id %}"
+            class="text-brown-2 font-bold text-lg hover:text-black cursor-pointer"
+          >
+            Follow
+          </a>
+        </p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>

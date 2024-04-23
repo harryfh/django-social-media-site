@@ -1,0 +1,29 @@
+<div class="mt-2 jersey w-full">
+  {% for blog in profile.user.blogs.all %} {% if blog.id %}
+  <article
+    class="my-8 stroke-black rounded p-6 bg-yellow hover:shadow-[0px_0px_0px_5px_rgba(0,0,0,1)] shadow-[0px_0px_0px_3px_rgba(0,0,0,1)] text-red"
+  >
+    <h2 class="font-bold text-3xl mb-1 hover: cursor-pointer">
+      <a href="">
+        {% if blog.title %} {{ blog.title }} {% else %} Untitled {% endif %}
+      </a>
+    </h2>
+    <p class="text-base leading-6 mb-3">
+      <time> {{ blog.created_at }} by @{{ blog.user }}</time>
+    </p>
+
+    {% if blog.content %}
+    <p class="text-lg mb-3">
+      {{ blog.description }}
+      <a
+        href="{% url 'hotdogger:blog_post' blog.id%}"
+        class="text-blue-500 font-bold text-lg hover: cursor-pointer"
+      >
+        Read more →
+      </a>
+    </p>
+    {% endif %}
+    <p></p>
+  </article>
+  {% endif %} {% endfor %}
+</div>

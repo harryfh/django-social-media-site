@@ -26,7 +26,6 @@ class BlogPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="blogs")
     title = models.CharField(max_length=50)
     content = models.TextField()
-
     created_at = models.DateTimeField(auto_now_add=True)
     
     @property

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="grid grid-cols-[1.5fr_1fr] gap-3">
+  <div class="justify-self-center place-self-center col-span-1 w-full">
+    <p class="jersey text-2xl mx-16 w-full">From people you are following</p>
+    <ul class="mx-16">
+      {% for followed in user.profile.follows.all %}
+      <li>{% include 'components/blog_list.html' with profile=followed %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-start-2 justify-self-center flex flex-col gap-3">
+    <div class="block">
+      <a href="{% url 'hotdogger:profile_list' %} ">
+        <button class="btn-2 jersey-10 block text-3xl text-center w-full">
+          All Profiles
+        </button>
+      </a>
+    </div>
+    <div class="block">
+      <a href="{% url 'hotdogger:profile' request.user.profile.id %} ">
+        <button class="btn-2 jersey-10 block text-3xl text-center w-full">
+          MY PROFILE
+        </button>
+      </a>
+    </div>
+    <div class="flex flex-col items-center gap-3 w-full">
+      <p class="jersey text-2xl">See Something Say Something</p>
+      <form
+        method="post"
+        class="flex flex-col justify-items-center items-center"
+      >
+        {% csrf_token %}{{ form.as_p }}
+
+        <button class="btn mt-5 w-full jersey px-3 py-1" type="submit">
+          <a class="text-center w-full text-xl"> Uhh.. BLOG IT </a>
+        </button>
+      </form>
+    </div>
+
+    {% endblock content %}
+  </div>
+</div>

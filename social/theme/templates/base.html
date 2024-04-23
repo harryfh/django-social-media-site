@@ -28,30 +28,30 @@
     {% tailwind_css %}
     <title>{{ title }}</title>
   </head>
-  <body class="min-h-screen">
-    <!-- <div class="flex flex-col justify-center py-px-16 h-full bg-brown-1"> -->
-    {% include "components/navigation.html" %}
-    <div
-      class="flex flex-col items-center py-16 h-full min-h-screen w-full bg-brown-2"
-    >
-      <img
-        class="w-32"
-        src="https://media.tenor.com/tbLD5H8CIO8AAAAi/hot-dog-hot-dogs.gif"
-      />
-      <header class="mb-7">
-        <h1
-          class="text-5xl jersey [text-shadow:_-3px_0px_0px_rgb(255_217_102_/_100%),_3px_0px_0px_rgb(255_217_102_/_100%),_1px_-3px_0px_rgb(255_217_102_/_100%),_1px_3px_0px_rgb(255_217_102_/_100%)] text-red-2 font-bold"
-        >
-          HotdogBlogger.com
-        </h1>
-      </header>
 
-      <main class="container h-full">
-        {% block content %} {% endblock content %}
-      </main>
+  <body class="min-h-screen">
+    <div class="px-16 bg-brown-1">
+      <!-- <div class="flex flex-col justify-center py-px-16 h-full bg-brown-1"> -->
+      {% include "components/navigation.html" %}
+      <div
+        class="flex flex-col items-center py-16 h-full min-h-screen w-full bg-brown-2"
+      >
+        <img
+          class="w-16"
+          src="https://media.tenor.com/tbLD5H8CIO8AAAAi/hot-dog-hot-dogs.gif"
+        />
+        <header class="mb-8">
+          <h1
+            class="text-5xl jersey [text-shadow:_-3px_0px_0px_rgb(255_217_102_/_100%),_3px_0px_0px_rgb(255_217_102_/_100%),_1px_-3px_0px_rgb(255_217_102_/_100%),_1px_3px_0px_rgb(255_217_102_/_100%)] text-red-2 font-bold"
+          >
+            HotdogBlogger.com
+          </h1>
+        </header>
+
+        <main class="container h-full">
+          {% block content %} {% endblock content %}
+        </main>
+      </div>
     </div>
-    <div
-      class="flex bottom-0 items-center sticky text-black justify-between flex-wrap px-5 py-5 bg-brown-1 jersey border-t-4 gap-5 border-black"
-    ></div>
   </body>
 </html>
